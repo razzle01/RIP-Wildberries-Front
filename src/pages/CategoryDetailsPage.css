@@ -1,0 +1,41 @@
+/* Стили для category-details */
+
+.category-details {
+    padding: 50px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Добавляем тень для стиля */
+}
+
+.cat-content {
+    display: flex;
+    gap: 30px; /* Добавляем пространство между изображением и текстом */
+    align-items: flex-start; /* Выравниваем элементы по началу по вертикали */
+    margin-top: 20px; /* Отступ сверху для отделения от хлебных крошек */
+}
+
+.cat-image img {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.cat-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.cat-info h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.cat-info p {
+    font-size: 18px;
+    color: #6b6b6b;
+    line-height: 1.6;
+}

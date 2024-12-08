@@ -1,0 +1,93 @@
+/* Стили для MainPageCategories */
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 колонки, как в оригинале */
+    gap: 30px; /* Отступы между карточками */
+    margin: 70px auto; /* Центрирование контейнера и отступ сверху */
+    max-width: 1250px; /* Максимальная ширина для сохранения структуры */
+}
+
+/* Карточка категории */
+.category-card {
+    border-radius: 20px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; 
+    text-decoration: none; /* Убираем подчеркивание для ссылок */
+    color: inherit; /* Наследуем цвет текста */
+}
+
+.category-card:hover {
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    background-color: #f9f9f9;
+}
+
+/* Изображение категории */
+.category-image-content {
+    width: 100%;
+    height: 300px; 
+    border-radius: 20px 20px 0 0; /* Закругление только в верхней части */
+    object-fit: cover;
+}
+
+/* Название категории */
+.category-name {
+    font-size: 20px;
+    font-weight: 300;
+    padding: 15px;
+    text-align: center;
+}
+
+/* Стили для Header */
+
+.navigation {
+    text-decoration: none; /* Убираем подчеркивание */
+    color: white; /* Цвет текста ссылки */
+    font-size: 37px; 
+    font-weight: bold;
+    padding-left: 30px;
+}
+
+/* Стили для поиска */
+
+.main-search {
+    width: 600px; /* Изменили ширину, чтобы смотрелось лучше */
+    height: 58px;
+    border-radius: 20px; /* Полное скругление углов */
+    padding-left: 20px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background-color: lightgray;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px auto; /* Центрирование контейнера и отступ сверху */
+    width: 100%; /* Ширина контейнера */
+    max-width: 900px; /* Ограничиваем максимальную ширину контейнера */
+    gap: 10px; /* Пространство между полем ввода и кнопкой поиска */
+}
+
+/* Стили для кнопки поиска */
+.search-btn {
+    height: 58px;
+    padding: 0 20px;
+    border-radius: 20px; /* Скругленные углы для кнопки */
+    border: none;
+    background-color: #f441ee; /* Фиолетовый цвет для кнопки */
+    color: #fff; /* Белый цвет текста */
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.search-btn:hover {
+    background-color: #5a0ca0; /* Темно-фиолетовый цвет при наведении */
+}
