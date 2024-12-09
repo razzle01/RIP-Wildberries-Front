@@ -1,0 +1,12 @@
+{
+	"name": "Tile Notes",
+	"short_name": "Tile Notes",
+	"start_url": "/RIP-Wildberries-Front/",
+	"display": "standalone",
+	"background_color": "#fdfdfd",
+	"theme_color": "#db4938",
+	"orientation": "portrait-primary",
+	"icons": [
+	  
+	]
+  }
