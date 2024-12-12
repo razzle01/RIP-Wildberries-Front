@@ -4,7 +4,7 @@
 	"start_url": "/RIP-Wildberries-Front/",
 	"display": "standalone",
 	"background_color": "#fdfdfd",
-	"theme_color": "#db4938",
+	"theme_color": "#fdfdfd",
 	"orientation": "portrait-primary",
 	"screenshots": [
 		{
