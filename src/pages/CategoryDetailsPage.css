@@ -39,3 +39,69 @@
     color: #6b6b6b;
     line-height: 1.6;
 }
+
+/* Адаптивность для средних экранов (планшеты) */
+@media (max-width: 1024px) {
+    .cat-content {
+        gap: 20px; /* Уменьшаем расстояние между изображением и текстом */
+    }
+
+    .cat-image img {
+        width: 250px;
+        height: 350px; /* Уменьшаем размеры изображения */
+    }
+
+    .cat-info h1 {
+        font-size: 30px; /* Уменьшаем заголовок */
+    }
+
+    .cat-info p {
+        font-size: 16px; /* Уменьшаем текст описания */
+    }
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .cat-content {
+        flex-direction: column; /* Переключаем на вертикальное расположение */
+        align-items: center; /* Выравниваем элементы по центру */
+    }
+
+    .cat-image img {
+        width: 200px;
+        height: 300px; /* Ещё меньшее изображение */
+    }
+
+    .cat-info {
+        align-items: center; /* Центрируем текст */
+        text-align: center; /* Центрируем текст */
+    }
+
+    .cat-info h1 {
+        font-size: 24px; /* Ещё меньше заголовок */
+    }
+
+    .cat-info p {
+        font-size: 14px; /* Уменьшаем описание */
+    }
+}
+
+/* Адаптивность для очень маленьких экранов */
+@media (max-width: 480px) {
+    .category-details {
+        padding: 20px; /* Уменьшаем внутренние отступы */
+    }
+
+    .cat-image img {
+        width: 150px;
+        height: 200px; /* Минимальные размеры изображения */
+    }
+
+    .cat-info h1 {
+        font-size: 20px; /* Заголовок ещё меньше */
+    }
+
+    .cat-info p {
+        font-size: 12px; /* Уменьшаем текст описания */
+    }
+}

@@ -1,0 +1,33 @@
+{
+	"name": "Tile Notes",
+	"short_name": "Tile Notes",
+	"start_url": "/RIP-Wildberries-Front/",
+	"display": "standalone",
+	"background_color": "#fdfdfd",
+	"theme_color": "#fdfdfd",
+	"orientation": "portrait-primary",
+	"screenshots": [
+		{
+		  "src": "screenshots/screenshot1.png",
+		  "sizes": "1280x720",
+		  "type": "image/png",
+		  "form_factor": "wide"
+		},
+		{
+		  "src": "screenshots/screenshot2.png",
+		  "sizes": "720x1280",
+		  "type": "image/png",
+		  "form_factor": "narrow"
+		}
+	  ],
+	  "icons": [
+		{
+		  "src": "/logo192.png",
+		  "type": "image/png", "sizes": "192x192"
+		},
+		{
+		  "src": "/logo512.png",
+		  "type": "image/png", "sizes": "512x512"
+		}
+	  ]
+  }

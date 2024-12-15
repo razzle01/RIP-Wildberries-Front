@@ -1,74 +1,65 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"; // Для навигации
-import { fetchCategories } from "../modules/MyApiCategories"; // Для получения категорий
-import { MyCategories } from "../modules/MyInterface"; // Интерфейс категорий
-import { OneCategoryItem } from "../components/OneCategoryItem"; // Карточка категории
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { setCategories, setSearchQuery } from "../searchSlice";
+import { RootState } from "../store";
+import { fetchCategories } from "../modules/MyApiCategories";
+import { OneCategoryItem } from "../components/OneCategoryItem";
 import { BreadCrumbs } from "../components/BreadCrumbs";
 import Header from "../components/Header";
 import "./MainPageCategories.css";
 
 const MainPageCategories: React.FC = () => {
-  const [categories, setCategories] = useState<MyCategories[]>([]); // Список категорий
-  const [searchQuery, setSearchQuery] = useState(""); // Строка поиска
-  const navigate = useNavigate(); // Навигация для перехода
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const categories = useSelector((state: RootState) => state.categories.categories);
+  const searchQuery = useSelector((state: RootState) => state.categories.searchQuery);
 
   // Загружаем категории при первом рендере
   useEffect(() => {
     const loadCategories = async () => {
-      await fetchCategories("", setCategories); // Загружаем все категории
+      const data = await fetchCategories("");
+      dispatch(setCategories(data)); // Обновляем глобальное состояние
     };
 
     loadCategories();
-  }, []);
+  }, [dispatch]);
 
-  // Поиск категорий
+  // Обработчик поиска
   const handleSearch = async () => {
-    await fetchCategories(searchQuery, setCategories); // Вызов функции поиска
-  };
-
-  // Переход на страницу категории по ID
-  const handleCategoryClick = (id: number) => {
-    navigate(`/categories/${id}`); // Переход по id
+    const data = await fetchCategories(searchQuery);
+    dispatch(setCategories(data)); // Обновляем глобальное состояние
   };
 
   return (
     <>
       <Header />
-      <div>
-        {/* Хлебные крошки */}
-        <BreadCrumbs
-          crumbs={[
-            { label: "Категории" }, // Текущая страница
-          ]}
+      <BreadCrumbs crumbs={[{ label: "Категории" }]} />
+      <div className="search-container">
+        <input
+          type="text"
+          className="main-search"
+          placeholder="Введите имя категории"
+          value={searchQuery}
+          onChange={(e) => dispatch(setSearchQuery(e.target.value))}
         />
-
-        {/* Поле ввода для поиска */}
-        <div className="search-container">
-          <input
-            type="text"
-            className="main-search"
-            placeholder="Введите имя категории"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)} // Обновляем строку поиска
+        <button className="search-btn" onClick={handleSearch}>
+          Найти
+        </button>
+      </div>
+      <div className="categories-grid">
+        {categories.map((category) => (
+          <OneCategoryItem
+            key={category.id}
+            category={category}
+            imageClickHandler={() => navigate(`/categories/${category.id}`)}
           />
-          <button className="search-btn" onClick={handleSearch}>
-            Найти
-          </button>
-        </div>
-
-        {/* Список категорий */}
-        <div className="categories-grid">
-          {categories.map((category, pk) => (
-            <OneCategoryItem
-              key={pk}
-              category={category}
-              imageClickHandler={() => handleCategoryClick(pk + 1)} // Передаем id в обработчик
-            />
-          ))}
-        </div>
+        ))}
       </div>
     </>
   );
 };
 
 export default MainPageCategories;
+

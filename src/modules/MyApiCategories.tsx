@@ -18,25 +18,20 @@ import { MyCategories, ApiResponse } from "./MyInterface";
 	  
 
 	  
-	  export const fetchCategories = async (
-		categoryName: string,
-		setCategories: (categories: MyCategories[]) => void
-	  ): Promise<void> => {
+	  export const fetchCategories = async (categoryName: string): Promise<MyCategories[]> => {
 		try {
 		  let response: Response;
 	  
 		  if (!categoryName.trim()) {
-			// Если строка поиска пуста, запрашиваем все категории
 			response = await fetch(`/api/categories/`, {
 			  headers: {
-				Accept: "application/json", // Указываем, что ожидаем JSON
+				Accept: "application/json",
 			  },
 			});
 		  } else {
-			// Иначе фильтруем по имени
 			response = await fetch(`/api/categories/?name=${encodeURIComponent(categoryName)}`, {
 			  headers: {
-				Accept: "application/json", // Указываем, что ожидаем JSON
+				Accept: "application/json",
 			  },
 			});
 		  }
@@ -45,27 +40,23 @@ import { MyCategories, ApiResponse } from "./MyInterface";
 			throw new Error(`Ошибка сервера: ${response.status}`);
 		  }
 	  
-		  const data: ApiResponse = await response.json(); // Преобразуем ответ в JSON
+		  const data: ApiResponse = await response.json();
 	  
-		  // Проверяем, действительно ли ответ содержит категории
 		  if (data && data.categories) {
-			setCategories(data.categories); // Устанавливаем данные из бэка
+			return data.categories; // Возвращаем данные напрямую
 		  } else {
 			throw new Error("Некорректный формат данных");
 		  }
-	  
 		} catch (error) {
 		  console.error("Ошибка при запросе данных:", error);
 	  
-		  // Если ошибка, используем мок-данные
 		  const filteredMockCategories = categoryName
 			? MOCK_DATA_CATEGORIES.categories.filter((category) =>
 				category.name.toLowerCase().includes(categoryName.toLowerCase())
 			  )
-			: MOCK_DATA_CATEGORIES.categories; // Если пусто, возвращаем все категории из моков
+			: MOCK_DATA_CATEGORIES.categories;
 	  
-		  setCategories(filteredMockCategories);
+		  return filteredMockCategories; // Возвращаем мок-данные в случае ошибки
 		}
 	  };
 	  
-		
