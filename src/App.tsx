@@ -7,7 +7,7 @@ import CategoryDetailsPage from "./pages/CategoryDetailsPage";
 
 function App() {
     return (
-      <BrowserRouter basename="/RIP-Wildberries-Front"> 
+      <BrowserRouter > 
         <Routes>
             <Route path={ROUTES.HOME} index element={<HomePage/>} />
             <Route path={ROUTES.CATEGORIES} index element={<MainPageCategories/>}/>

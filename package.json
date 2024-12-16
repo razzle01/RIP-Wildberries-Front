@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "tauri": "tauri",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
@@ -12,6 +13,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",
+    "@tauri-apps/api": "^2.1.1",
     "@types/node": "^22.10.2",
     "bootstrap": "^5.3.3",
     "express": "^4.21.2",
@@ -27,6 +29,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
+    "@tauri-apps/cli": "^2.1.0",
     "@types/express": "^5.0.0",
     "@types/http-proxy-middleware": "^1.0.0",
     "@types/react": "^18.3.12",

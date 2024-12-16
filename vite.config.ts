@@ -7,7 +7,7 @@ import fs from 'fs'
 import path from 'path'
 
 export default defineConfig({
-  base: "/RIP-Wildberries-Front",
+  base: "/",
   server: {
     host: true, // Разрешить доступ по локальному IP
     port: 3000, // Задать порт
